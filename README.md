@@ -1,2 +1,2 @@
 # WindowsGSM
-Plugins for Windows GSM
+🧩Plugins for Windows GSM

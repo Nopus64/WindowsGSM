@@ -31,35 +31,36 @@ namespace WindowsGSM.Plugins
 
         // - Settings properties for SteamCMD installer
         public override bool loginAnonymous => true;
-        public override string AppId => "600760 "; // Game server appId, STATIONEERS is 600760 
+        public override string AppId => "427520 "; // Game server appId, FACTORIO is 427520 
 
 
         // - Game server Fixed variables
-        public override string StartPath => @"rocketstation_DedicatedServer.exe"; // Game server start path
-        public string FullName = "Stationeers Dedicated Server"; // Game server FullName
+        public override string StartPath => @"factorio.exe"; // Game server start path
+        public string FullName = "Factorio Dedicated Server"; // Game server FullName
         public bool AllowsEmbedConsole = false;  // Does this server support output redirect?
         public int PortIncrements = 1; // This tells WindowsGSM how many ports should skip after installation
         public object QueryMethod = null; // Query method should be use on current server type. Accepted value: null or new A2S() or new FIVEM() or new UT3()
 
 
         // - Game server default values
-		public string ServerDescription = "Stationeers"; //Default Server Description
-		public string Password = "AdminPass"; //Default Server Password [none]
-		public string AdminPass = ""; // Default Adinpassword
-		public string RConPass = "stationeers"; //Defuakt RconPassword
-        public string Port = "27000"; // Default port
+		public string ServerDescription = "Factorio"; //Default Server Description
+		public string Password = ""; //Default Server Password [none]
+		public string AdminPass = ""; // Default Adminpassword
+		public string RConPass = "Factorio"; //Default RconPassword
+        public string Port = "34197"; // Default port
         public string QueryPort = "27001"; // Default query port
-        public string Defaultmap = "Moon"; // Default map name
-        public string Maxplayers = "0"; // Default maxplayers
+        public string Defaultmap = ""; // Default map name
+        public string Maxplayers = "100"; // Default maxplayers
 		//public string ModPath = ".\mods\";
-        public string Additional = "-batchmode -nographics -autostart -gameport=27000 -updateport=27001 -autosaveinterval=300 -servername=WGSM-StationeersServer -password=lol -loadworld=WGSM-StationeersServer -worldname=WGSM-StationeersServer";
+        // public string Additional = "-batchmode -nographics -autostart -gameport=27000 -updateport=27001 -autosaveinterval=300 -servername=WGSM-FactorioServer -password=lol -loadworld=WGSM-FactorioServer -worldname=WGSM-FactorioServer";
+        public string Additional = " ./bin/x64/factorio --start-server-load-latest --server-settings ./Users/Public/Factorio/server-settings.json";
 
 
         // - Create a default cfg for the game server after installation
         public async void CreateServerCFG() 
         {
             string configPath = ServerPath.GetServersServerFiles(_serverData.ServerID, @"");
-            //may nod used in Stationeers
+            //may nod used in Factorio
 			if (!Directory.Exists(configPath))
             {
                 try
@@ -73,13 +74,13 @@ namespace WindowsGSM.Plugins
 
             }
 
-            //string StationeerServerSettingsIni = "default.ini";
+            //string FactorioServerSettingsIni = "default.ini";
            //string EngineIni = "Engine.ini";
 
 			/*
-            if (await DownloadGameServerConfig(StationeerServerSettingsIni, Path.Combine(configPath, StationeerServerSettingsIni)))
+            if (await DownloadGameServerConfig(FactorioServerSettingsIni, Path.Combine(configPath, FactorioServerSettingsIni)))
             {
-                string configText = File.ReadAllText(configPath + "\\" + StationeerServerSettingsIni);
+                string configText = File.ReadAllText(configPath + "\\" + FactorioServerSettingsIni);
 				configText = configText.Replace("{{SERVERNAME}}", _serverData.FullName);
 				configText = configText.Replace("{{GAMEPORT}}", _serverData.ServerPort);
                 configText = configText.Replace("{{UPDATERPORT}}", _serverData.QueryPort);
@@ -91,7 +92,7 @@ namespace WindowsGSM.Plugins
 				configText = configText.Replace("{{MAXPLAYER}}", _serverData.Maxplayers);
 				configText = configText.Replace("{{RCONPASSWORD}}", _serverData.RConPass);			
 				
-                File.WriteAllText(configPath + "\\" + StationeerServerSettingsIni, configText);
+                File.WriteAllText(configPath + "\\" + FactorioServerSettingsIni, configText);
             }*/
         }
 

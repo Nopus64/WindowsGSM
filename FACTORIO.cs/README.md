@@ -19,6 +19,12 @@
 
 Not all is handled by Windows GSM due to Factorio Limitations (blame the devs):
 
+**DO THIS STEP FIRST**. You will need to create your save file before you start the server, as the dedicated server REQUIRES a save file to be provided. 
+This can easily be done using the --create command-line argument. For example:
+
+`./bin/x64/factorio --create ./saves/my-save.zip       # This creates a new save, as if by clicking the New Game button in the GUI`
+
+
 1. Find the example file named "server-settings.example.json" under the directory:
 `YOURDRIVELETTER\path\to\Steam\steamapps\common\Factorio\data\server-settings.example.json` (game installation directory)
 2. Copy the file and put it under file path: C:\Users\Public\server-settings.example.json (for example)
@@ -47,3 +53,6 @@ With the examples above, the input of your "server.bat" file should look like th
 start /wait Factorio.exe --start-server MySaveGame.zip --server-settings C:\Users\Public\server-settings.json
 exit 0
 ```
+
+
+Special Thanks to Nopus.cH#1648 for letting me use his [Stationeers Plugin](https://github.com/Nopus64/WindowsGSM.STATIONEERS) for WindowsGSM as a starting point.
